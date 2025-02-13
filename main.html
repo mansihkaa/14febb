@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message by SHIVANSH</title>
+     <style>
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100dvh;
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: hidden;
+  color: hsl(180 68% 5%);
+  background-image: radial-gradient(
+      circle farthest-corner at 50% 50%,
+      hsl(187 20% 88%) 30%,
+      hsl(149 20% 94%) 100%
+  );
+}
+
+.book {
+  position: relative;
+  display: flex;
+  margin: auto;
+  width: 42cqmin; /* Increased width */
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: translate 1s;
+  translate: calc(min(var(--c), 1) * 50%) 0%;
+  rotate: 1 0 0 30deg;
+}
+
+.page {
+  --thickness: 4;
+  flex: none;
+  display: flex;
+  width: 100%;
+  font-size: 2.2cqmin; /* Slightly increased font size */
+  pointer-events: all;
+  user-select: none;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1s,
+      rotate 1s ease-in calc((min(var(--i), var(--c)) - max(var(--i), var(--c))) * 50ms);
+  translate: calc(var(--i) * -100%) 0px 0px;
+  transform: translateZ(calc((var(--c) - var(--i) - 0.5) * calc(var(--thickness) * 0.23cqmin)));
+  rotate: 0 1 0 calc(clamp(0, var(--c) - var(--i), 1) * -180deg);
+}
+
+.front,
+.back {
+  position: relative;
+  flex: none;
+  width: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #fff;
+  translate: 0px;
+}
+
+.back {
+  translate: -100% 0;
+  rotate: 0 1 0 180deg;
+}
+
+.book {
+  counter-reset: page -1;
+}
+
+.book a {
+  color: inherit;
+}
+
+.page {
+  box-shadow: 0em 0.5em 1em -0.2em #00000020;
+}
+
+.front,
+.back {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  padding: 2em;
+  border: 1px solid #0002;
+}
+
+.front:has(img),
+.back:has(img) {
+  padding: 0;
+}
+
+.front img,
+.back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.front::after,
+.back::after {
+  position: absolute;
+  bottom: 1em;
+  counter-increment: page;
+  content: counter(page) ".";
+  font-size: 0.8em;
+}
+
+.cover::after {
+  content: "";
+}
+
+.front::after {
+  right: 1em;
+}
+
+.front {
+  background: linear-gradient(to left, #f7f7f7 80%, #eee 100%);
+  border-radius: 0.1em 0.5em 0.5em 0.1em;
+}
+
+.back::after {
+  left: 1em;
+}
+
+.back {
+  background-image: linear-gradient(to right, #f7f7f7 80%, #eee 100%);
+  border-radius: 0.5em 0.1em 0.1em 0.5em;
+}
+
+.cover {
+  background: radial-gradient(
+          circle farthest-corner at 80% 20%,
+          hsl(150 80% 20% / 0.3) 0%,
+          hsl(170 60% 10% / 0.1) 100%
+      ),
+      hsl(231, 32%, 29%) url("./us.jpg") 50% / cover;
+  color: hsl(0, 100%, 30%); /* Dark red text color for cover page */
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 1px;
+  color: hsl(0, 100%, 30%); /* Dark red heading color */
+}
+
+p {
+  margin-top: 1px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: hsl(0, 100%, 30%); /* Dark red text color for paragraphs */
+}
+
+.front,
+.back {
+  padding: 1.5em;
+  color: hsl(0, 100%, 30%); /* Dark red text color for front and back pages */
+}
+
+.book {
+  width: 40cqmin; /* Slightly increased width */
+}
+
+.page {
+  font-size: 2cqmin; /* Slightly increased font size */
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.front,
+.back {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.5em;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100dvh;
+  perspective: 1000px;
+  font: 1em/1.4 "Poppins", sans-serif;
+  overflow: hidden;
+  color: hsl(180 68% 5%);
+  background: linear-gradient(to right, #ff7eb9, #ff65a3, #ff165d);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Emoji Animation */
+.emoji {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0;
+  animation: floatEmojis 6s ease-in-out infinite;
+}
+
+@keyframes floatEmojis {
+  0% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) rotate(20deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+}
+
+/* Add random timing for each emoji */
+.emoji:nth-child(1) {
+  animation-delay: 0s;
+  left: 10%;
+}
+.emoji:nth-child(2) {
+  animation-delay: 1s;
+  left: 20%;
+}
+.emoji:nth-child(3) {
+  animation-delay: 2s;
+  left: 30%;
+}
+.emoji:nth-child(4) {
+  animation-delay: 3s;
+  left: 40%;
+}
+.emoji:nth-child(5) {
+  animation-delay: 4s;
+  left: 50%;
+}
+.emoji:nth-child(6) {
+  animation-delay: 5s;
+  left: 60%;
+}
+.emoji:nth-child(7) {
+  animation-delay: 6s;
+  left: 70%;
+}
+.emoji:nth-child(8) {
+  animation-delay: 7s;
+  left: 80%;
+}
+.emoji:nth-child(9) {
+  animation-delay: 8s;
+  left: 90%;
+}
+
+
+     </style>
+  </head>
+  <body>
+    <div class="book">
+      <div class="page">
+        <div class="front cover">
+          <h1
+            style="
+              color: rgb(255, 255, 255);
+              text-shadow: 5px 2px 5px rgb(0, 0, 0);
+            "
+          >
+            A Message for You🤍
+          </h1>
+
+          <p
+            style="
+              color: rgb(255, 255, 255);
+              text-shadow: 5px 2px 5px rgb(0, 0, 0);
+            "
+          >
+            2025.<br />SHIVANSH ❤️ MANISHIKA
+          </p>
+        </div>
+        <div class="back">
+          <h2>A Special Beginning ❤️✨</h2>
+
+       <p>Some people come into our lives unexpectedly, yet leave a lasting impact. You are one of those rare souls who make every moment feel a little more special.
+
+        Jabse tumse baat kiya hu you have a special space in my heart tbse ❤️, your beauty your charm everything, i mean everything i love about you.
+        
+        This isn’t just a collection of words; it’s a small way of showing how much you mean to me. A way to remind you that you are appreciated, admired, and truly special.
+        
+        So, here’s to us—our conversations, our connection, and the beautiful moments yet to come. 💖</p>
+
+        </div>
+      </div>
+      <!--2nd page-->
+      <div class="page">
+        <div class="front">
+          <h2>From Strangers to Something Special ❤️✨</h2>
+          <p>
+            i don’t know how we met ya ye sab kuch kaise hua but i am thankful to god for giving you in my life ❤️
+
+            I mean isse zayada mujhe kuch nhi mil skta tha life mein. I love you sooo much and beyond anything ❤️✨
+          </p>
+        </div>
+        <div class="back">
+          <img src="./WhatsApp Image 2025-02-13 at 20.26.39_94ca3b4d.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--3rd page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Magic of You ✨💖</h2>
+          <p>
+            whenever i talk to you or i am around you i feel peace. I can't ask for more from god. I'm happy and really very grateful to have you in my life.
+            
+            Your presence feels like a soft melody, soothing yet unforgettable. The way you carry yourself, the kindness in your heart, and the purity in your soul make you even more special. It’s not just about how beautiful you look—it’s about how beautiful you truly are.
+            
+            Every time I see you, I’m reminded that some things in life are simply magical, and you, without a doubt, you are one of them. ✨💖
+          </p>
+        </div>
+        <div class="back">
+          <h2>US TOGETHER 💫✨</h2>
+          <p>
+            Will you  be with me forever?
+          </p>
+        </div>
+      </div>
+      <!--4th page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Best Part of My Day🤞💖</h2>
+          <p>
+            talking to u is one of my best part of the days. 
+
+            Din bhar ki tension pareshani everything i forget when i talk to you. 
+
+            And i hope we always stay TOGETHER and humesha aise he haste khelte muskarate rahe 👨‍❤️‍💋‍👨
+          </p>
+        </div>
+        <div class="back">
+          <img src="./IMG-20241224-WA0012.jpg" alt="Img 1" />
+        </div>
+      </div>
+      <!--5th page-->
+      <div class="page">
+        <div class="front">
+          <h1>A Wish from the Heart 💫💖</h1>
+          <p>
+            Sometimes, I feel we can meet more and more beacuse i always to to see you standing with me alwayssss..
+
+            I just want to hug you pamper you always. Itni acchi bandi hone ka kya mtlb jab tum pamper na kr sako ya hug na kr sako 😭 and haa kiss ka baad mein dekhenge whenever you want.
+          </p>
+        </div>
+        <div class="back">
+          <h1>Always Here for You 💖✨</h1>
+          <p>
+            My time is yours whenever you need it.
+            
+            Life can be unpredictable, but I hope you never feel alone. Whether it’s a good day or a tough one, I’ll always be here to cheer you on, to remind you how amazing you are.
+            
+            You deserve nothing but happiness, and if I can be a small part of that, I’d be honored. No matter where life takes us, just know that you’ll always have someone who cares—someone who truly believes in you. 💕
+          </p>
+        </div>
+      </div>
+      <!--6th page-->
+      <div class="page">
+        <div class="front">
+          <h2>The Beauty of You ✨💖</h2>
+          <p>
+            And the most beautiful girl of the centuary award goes to - MANISHIKA CHAWLA yayayayayayay ❤️🌍
+          </p>
+        </div>
+        <div class="back">
+          <h2>ThankYou ✨💖</h2>
+          <p>
+            I just wanted to thank you and tell you that you are amazing and the best gf of the universe.
+          </p>
+        </div>
+      </div>
+      <!--7th page-->
+      <div class="page">
+        <div class="front">
+          <h2>Grateful for You🌹❤</h2>
+          <p>
+            I just wanted to take a moment to let you know how much I appreciate you. From the very start, you’ve been someone truly special—someone I admire more than words can express.
+
+
+            FOREVER GRATEFUL!! 
+          </p>
+        </div>
+        <div class="back">
+          <h2>Will You Be Mine? ❤️✨</h2>
+          <p>From day one you are mine and only mine and i never doubted this. 
+
+            But then also answer my question.
+            
+            Will you be mine? 💖💕 </p>
+        </div>
+      </div>
+
+      <div class="page">
+        <div class="front">
+          <img src="./us.jpg" alt="Img 1" />
+        </div>
+        <div class="back cover">
+          <h3>Cutest Queen</h3>
+          <p>
+            MANISHIKA ❤️ SHIVANSH ALWAYS AND FOREVER ♾️<br /><a
+              href=""
+              target="_blank"
+              rel="nofollow"></a>
+
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="emoji">❤️‍🔥</div>
+<div class="emoji">🫶🏻</div>
+<div class="emoji">❤️</div>
+<div class="emoji">😘</div>
+<div class="emoji">👨‍❤️‍💋‍👨</div>
+<div class="emoji">💓</div>
+<div class="emoji">❣️</div>
+<div class="emoji">💘</div>
+<div class="emoji">💖</div>
+<div class="emoji">💙</div>
+<div class="emoji">💚</div>
+<div class="emoji">🥰</div>
+<div class="emoji">💗</div>
+
+<script>
+  const flipBook = (elBook) => {
+    elBook.style.setProperty("--c", 0); // Set current page
+    elBook.querySelectorAll(".page").forEach((page, idx) => {
+      page.style.setProperty("--i", idx);
+      page.addEventListener("click", (evt) => {
+        if (evt.target.closest("a")) return;
+        const curr = evt.target.closest(".back") ? idx : idx + 1;
+        elBook.style.setProperty("--c", curr);
+      });
+    });
+  };
+  
+  document.querySelectorAll(".book").forEach(flipBook);
+  
+</script>
+ 
+  </body>
+</html>
+
